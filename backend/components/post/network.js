@@ -15,6 +15,17 @@ router.post('/', function (req, res) {
         })
 })
 
+// Dar me gusta a un post
+router.put('/', function (req, res) {
+    controller.addLike(req.body)
+        .then(data => {
+            response.success(req, res, data, 201);
+        })
+        .catch(e => {
+            response.error(req, res, e, 500, e);
+        })
+})
+
 // Obtener post con filtro
 router.post('/post', function (req, res) {
     controller.getPosts(req.body)

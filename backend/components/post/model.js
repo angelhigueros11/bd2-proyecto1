@@ -6,6 +6,10 @@ const mySchema = new Schema({
     name: String,
     description: String,
     image: String,
+    likes: {
+      type: Number,
+      default: 0
+    },
     createdAt: {
       type: Date,
       default: Date.now
