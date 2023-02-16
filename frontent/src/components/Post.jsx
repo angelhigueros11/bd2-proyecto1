@@ -25,6 +25,26 @@ export default function Post({post}) {
     }
   }
 
+  const handleDelete = async () => {
+    const fetchData = await api.post.remove({
+      id: post._id
+    })
+
+    if (fetchData.error == ''){
+      Swal.fire(
+        'Post eliminado', 
+        '',
+        'successs'
+      )
+    } else {
+      Swal.fire(
+        'No se ha podido eliminar el posts', 
+        '',
+        'error'
+      )
+    }
+  }
+
   return (
     <div className='post'>
       <p>Username: {post.name}</p>
@@ -36,6 +56,7 @@ export default function Post({post}) {
         </div>
       <div className="description">
           <button onClick={handleLike}>Me gusta</button>
+          <button onClick={handleDelete}>Elimnar</button>
       </div>
     </div>
   )

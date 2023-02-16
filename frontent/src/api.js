@@ -51,6 +51,19 @@ const api = {
         body: JSON.stringify(params),
       })
     },
+    getPostsLimit(limit) {
+      return callApi(`/post/limit`, {
+       method: "POST",
+       body: JSON.stringify(limit),
+     })
+   },
+    
+    remove(params) {
+      return callApi(`/post`, {
+       method: "DELETE",
+       body: JSON.stringify(params),
+     })
+   },
     like(params) {
       return callApi(`/post`, {
        method: "PUT",

@@ -6,6 +6,7 @@ import { useSessionStorage } from '../hooks/useSessionStorage'
 
 const PostForm = () => {
     const [ nameSession ] = useSessionStorage('name', '')
+    const [ idSession ] = useSessionStorage('idUser', '')
 
     const [postDescription, setPostDescription] = useState();
     const [selectedFile, setSelectedFile] = useState(null);
@@ -25,6 +26,7 @@ const PostForm = () => {
       const uniqueId = Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
   
       const fetchData = await api.post.addPost({
+        id: idSession, 
         name: nameSession,
         description: postDescription,
         image: `${parseInt(uniqueId, 36)}.jpg`

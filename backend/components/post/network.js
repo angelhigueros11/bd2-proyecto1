@@ -15,6 +15,19 @@ router.post('/', function (req, res) {
         })
 })
 
+
+
+// Remove post
+router.delete('/', function (req, res) {
+    controller.remove(req.body)
+        .then(data => {
+            response.success(req, res, data, 201);
+        })
+        .catch(e => {
+            response.error(req, res, e, 500, e);
+        })
+})
+
 // Dar me gusta a un post
 router.put('/', function (req, res) {
     controller.addLike(req.body)
@@ -29,6 +42,16 @@ router.put('/', function (req, res) {
 // Obtener post con filtro
 router.post('/post', function (req, res) {
     controller.getPosts(req.body)
+        .then(data => {
+            response.success(req, res, data, 201);
+        })
+        .catch(e => {
+            response.error(req, res, e, 500, e);
+        })
+})
+
+router.post('/limit', function (req, res) {
+    controller.getPostsLimit(req.body.limit)
         .then(data => {
             response.success(req, res, data, 201);
         })

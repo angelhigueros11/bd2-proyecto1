@@ -6,6 +6,7 @@ import { useSessionStorage } from '../hooks/useSessionStorage'
 
 export default function Login() {
   const [, setSession ] = useSessionStorage('name', '')
+  const [, setIdSession ] = useSessionStorage('idUser', '')
   const [userData, setUserData] = useState({
     name: '', 
     password: ''
@@ -28,6 +29,7 @@ export default function Login() {
     })
 
     if (fetchData.error === '' && fetchData.body.length > 0){
+      setIdSession(fetchData.body[0]._id)
       setSession(name)
       window.location.href = '/home'
     }else {
