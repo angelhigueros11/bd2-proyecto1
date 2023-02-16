@@ -10,7 +10,7 @@ export default function Post({post}) {
       id: post._id
     })
 
-    if (fetchData.error !== ''){
+    if (fetchData.error == ''){
       Swal.fire(
         'Me gusta', 
         '',
