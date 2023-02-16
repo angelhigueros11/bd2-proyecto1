@@ -51,6 +51,12 @@ const api = {
         body: JSON.stringify(params),
       })
     },
+    like(params) {
+      return callApi(`/post`, {
+       method: "PUT",
+       body: JSON.stringify(params),
+     })
+   },
   }
 };
 
