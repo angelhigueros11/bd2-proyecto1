@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3ae5ef9b.css",
+    "main.js": "/static/js/main.f8d31d4b.js",
+    "static/media/dogo.png": "/static/media/dogo.5ffb319233b8189fcb7a.png",
+    "static/media/paw.png": "/static/media/paw.08679b2544e8607d74bc.png",
+    "index.html": "/index.html",
+    "main.3ae5ef9b.css.map": "/static/css/main.3ae5ef9b.css.map",
+    "main.f8d31d4b.js.map": "/static/js/main.f8d31d4b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3ae5ef9b.css",
+    "static/js/main.f8d31d4b.js"
+  ]
+}
