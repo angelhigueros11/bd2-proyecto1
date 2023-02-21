@@ -25,6 +25,7 @@ export default function Home() {
 
   const handleLimit = (e) => {
     setLimit(e.target.value)
+    window.location.reload()
   }
   
   return (
@@ -33,6 +34,7 @@ export default function Home() {
         <div class="title-container">
           <h1>Dogstagram</h1>
           <select onChange={handleLimit}>
+            <option selected disabled value={limit}>{limit}</option>
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="20">20</option>

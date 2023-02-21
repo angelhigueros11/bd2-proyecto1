@@ -6,6 +6,7 @@ function addPost({ id, name, description, image }) {
         return Promise.reject('No estan todos los datos completos');
     }
         const post = {
+            idUser:
             id,
             name,
             description, 
@@ -33,12 +34,12 @@ async function remove({ id }) {
 }
 
 async function getPosts(params){
-    const post = await Model.find(params);
+    const post = await Model.find(params).sort(createdAt);
     return post;
 }
 
 async function getPostsLimit(limit){
-    const post = await Model.find().limit(limit);
+    const post = await Model.find().limit(limit).sort(createdAt);
     return post;
 }
 

@@ -51,3 +51,8 @@ body {
     grid-template-columns: repeat(3, 33%);
 }
 
+
+select{
+    border-radius: 10px;
+}
+

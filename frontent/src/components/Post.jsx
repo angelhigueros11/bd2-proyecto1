@@ -54,9 +54,10 @@ export default function Post({post}) {
       <div className="description">
             {post.description}
         </div>
-      <div className="description">
+      <div className="buttons">
           <button onClick={handleLike}>Me gusta</button>
           <button onClick={handleDelete}>Elimnar</button>
+          <div className='likes'>Likes: {post.likes}</div>
       </div>
     </div>
   )
