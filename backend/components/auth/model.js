@@ -9,6 +9,11 @@ const mySchema = new Schema({
         unique: true 
       },
     password: String,
+    contact: {
+      email: String,
+      address: String,
+      phone: String
+    }
 });
 
 const model = mongoose.model('users', mySchema);

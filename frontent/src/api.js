@@ -19,6 +19,12 @@ const api = {
     getUsers() {
       return callApi(`/auth`);
     },
+    getContactUser(params) {
+      return callApi(`/auth/contact`, {
+        method: "POST",
+        body: JSON.stringify(params),
+      })
+    },
     addUser(params) {
       return callApi(`/auth`, {
         method: "POST",

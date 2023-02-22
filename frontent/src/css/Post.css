@@ -12,6 +12,7 @@
     height: 80%;
     background-color: rgb(226, 226, 226);
     margin: 10px auto;
+    margin-bottom: 70px;
     text-align: center;
     border-radius: 50px;
     display: grid;
@@ -52,3 +53,13 @@ img{
     border-radius: 5px;
     color : white;
 }
+
+  .tag {
+    display: inline-block;
+    background-color: royalblue;
+    color: white;
+    font-size: 14px;
+    padding: 4px 8px;
+    margin-right: 10px;
+    border-radius: 4px;
+  }

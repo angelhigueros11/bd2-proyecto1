@@ -36,4 +36,16 @@ router.get('/', function (req, res) {
         response.error(req, res, e, 500, e);
     })
 })
+
+// Buscar usuarios utilzando proyecciones
+router.post('/contact', function (req, res) {
+    controller.getContactUser(req.body)
+    .then((userList) => {
+        response.success(req, res, userList, 200);
+    })
+    .catch(e => {
+        response.error(req, res, e, 500, e);
+    })
+})
+
 module.exports = router

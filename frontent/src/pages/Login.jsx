@@ -6,6 +6,7 @@ import { useSessionStorage } from '../hooks/useSessionStorage'
 
 export default function Login() {
   const [, setSession ] = useSessionStorage('name', '')
+  const [, setUser ] = useSessionStorage('user', '')
   const [, setIdSession ] = useSessionStorage('idUser', '')
   const [userData, setUserData] = useState({
     name: '', 
@@ -31,6 +32,7 @@ export default function Login() {
     if (fetchData.error === '' && fetchData.body.length > 0){
       setIdSession(fetchData.body[0]._id)
       setSession(name)
+      setUser(fetchData.body[0])
       window.location.href = '/home'
     }else {
       Swal.fire(

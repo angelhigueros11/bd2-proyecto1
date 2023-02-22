@@ -14,6 +14,7 @@ const mySchema = new Schema({
       type: Number,
       default: 0
     },
+    tags: [String],
     createdAt: {
       type: Date,
       default: Date.now

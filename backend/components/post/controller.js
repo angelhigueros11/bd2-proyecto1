@@ -1,7 +1,7 @@
 const Model = require('./model');
 
 
-function addPost({ id, name, description, image }) {
+function addPost({ id, name, description, image, tags }) {
     if (!name || !description || !image){
         return Promise.reject('No estan todos los datos completos');
     }
@@ -10,7 +10,8 @@ function addPost({ id, name, description, image }) {
             id,
             name,
             description, 
-            image
+            image, 
+            tags: tags.split(',')
         }
 
     

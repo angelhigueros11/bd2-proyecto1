@@ -8,9 +8,12 @@ export default function Signup() {
 
   const [userData, setUserData] = useState({
     name: '', 
-    password: ''
+    password: '',
+    phone: '',
+    address: '',
+    email: ''
   })
-  const {name, password} = userData
+  const {name, password, phone, address, email} = userData
 
   const handleData = (e) => {
     setUserData({
@@ -24,7 +27,10 @@ export default function Signup() {
 
     const fetchData = await api.auth.addUser({
       name: name, 
-      password: password
+      password: password,
+      phone: phone,
+      address: address,
+      email: email,
     })
 
     if (fetchData.error === ''){
@@ -52,6 +58,9 @@ export default function Signup() {
           <h2 >Sign up</h2>
           <input  type="text" name="name" value={name} onChange={handleData} placeholder="Name" />
           <input type="password" name="password" value={password} onChange={handleData} placeholder="Password" />
+          <input type="text" name="phone" value={phone} onChange={handleData} placeholder="Telefono" />
+          <input type="text" name="address" value={address} onChange={handleData} placeholder="Direccion" />
+          <input type="text" name="email" value={email} onChange={handleData} placeholder="Email" />
           <input type="submit" />
         </form>
         <a href="/">Go back</a>
