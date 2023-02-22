@@ -50,7 +50,7 @@ router.post('/post', function (req, res) {
         })
 })
 
-router.post('/post/mostPostsUser', function (req, res) {
+router.post('/mostPostsUser', function (req, res) {
     controller.getMostPostsUser(req.body)
         .then(data => {
             response.success(req, res, data, 201);
