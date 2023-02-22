@@ -11,10 +11,10 @@ import { useSessionStorage } from '../hooks/useSessionStorage'
 export default function Home() {
   //Hooks
   const [posts, setPosts] = useState([])
+  const [mostUser, setMostUser] = useState()
   const [ limit, setLimit ] = useSessionStorage('limit', 10)
   
 
-  console.log(api.post.getMostPostsUser());
   
 
   useEffect(() => {
@@ -22,10 +22,12 @@ export default function Home() {
         let data = await api.post.getPostsLimit({
           limit: limit,
         })
+        let data2 = await api.post.getMostPostsUser()
+        setMostUser(data2.body.count[0]._id)
         setPosts(data.body || [])
       }
       fetchData()
-  }, [])
+  }, [limit])
   
   // Handles
   const handleLimit = (e) => {
@@ -56,7 +58,7 @@ export default function Home() {
             </div>
             <div className="data">
               <div className="data-text">User with the most number of post:</div>
-              <div className="data-function">{}</div>
+              <div className="data-function">{mostUser}</div>
             </div>
         </div>
 
