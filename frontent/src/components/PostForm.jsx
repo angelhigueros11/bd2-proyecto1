@@ -50,6 +50,7 @@ const PostForm = () => {
           'Tu post se ha publicado correctamente',
           'success'
         )
+        window.location.reload()
       }else{
           Swal.fire(
             'Error',

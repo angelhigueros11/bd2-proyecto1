@@ -34,13 +34,13 @@ async function remove({ id }) {
 }
 
 async function getPosts(params){
-    const post = await Model.find(params).sort(createdAt);
+    const post = await Model.find(params).sort({ createdAt: 'desc' });
     return post;
 }
 
 async function getPostsLimit(limit){
-    const post = await Model.find().limit(limit).sort(createdAt);
-    return post;
+    const posts = await Model.find().sort({ createdAt: 'desc' }).limit(limit);
+    return posts;
 }
 
 module.exports = {
