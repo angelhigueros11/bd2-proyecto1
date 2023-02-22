@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
 html {
     margin: 0;
     padding: 0;
@@ -52,7 +54,41 @@ body {
 }
 
 
-select{
+
+
+
+
+.data-admin{
+    display: grid;
+    grid-template-columns: repeat(5,20%) ;
+    background-color:red;
+    border-top: none;
+    gap: 5px;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.data-admin .data{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 5px;
+    gap: 5px;
+}
+
+.data-admin .data-text{
+    font-size: 13px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    background-color: white;
     border-radius: 10px;
 }
 
+.data-admin .data-function{
+    border-radius: 10px !important;
+    border: 1px solid gray;
+    background-color: white;
+}

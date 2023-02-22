@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import api from '../api'
 import Swal from 'sweetalert2'
 import '../css/Post.css'
+
 
 export default function Post({post}) {
 
@@ -23,6 +24,8 @@ export default function Post({post}) {
         'error'
       )
     }
+    window.sessionStorage.setItem('scrollPos', window.scrollY);
+    window.location.reload()
   }
 
   const handleDelete = async () => {
@@ -43,7 +46,19 @@ export default function Post({post}) {
         'error'
       )
     }
+    window.sessionStorage.setItem('scrollPos', window.scrollY);
+    window.location.reload()
   }
+
+
+  useEffect(() => {
+    // Restaurar la posición del scroll desde sessionStorage
+    const scrollPos = window.sessionStorage.getItem('scrollPos');
+    if (scrollPos) {
+      window.scrollTo(0, scrollPos);
+      window.sessionStorage.removeItem('scrollPos');
+    }
+  }, []);
 
   return (
     <div className='post'>

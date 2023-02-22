@@ -9,9 +9,9 @@ import { useSessionStorage } from '../hooks/useSessionStorage'
 
 
 export default function Home() {
+  //Hooks
   const [posts, setPosts] = useState([])
   const [ limit, setLimit ] = useSessionStorage('limit', 10)
-
   useEffect(() => {
       const fetchData = async () => {
         let data = await api.post.getPostsLimit({
@@ -22,27 +22,39 @@ export default function Home() {
       fetchData()
   }, [])
   
-
+  // Handles
   const handleLimit = (e) => {
     setLimit(e.target.value)
     window.location.reload()
   }
+
+
   
   return (
     <>
       <div className="home-container">
         <div class="title-container">
           <h1>Dogstagram</h1>
-          <select onChange={handleLimit}>
-            <option selected disabled value={limit}>{limit}</option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="40">40</option>
-            <option value="100">100</option>
-          </select>
         </div>
+        <div className="data-admin">
+            <div className="data">
+              <div className="data-text">Limit of posts you can see</div>
+              <select className='data-function' onChange={handleLimit}>
+                <option selected disabled value={limit} >{limit}</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="100">100</option>
+              </select>
+            </div>
+            <div className="data">
+              <div className="data-text">Cantidad de posts</div>
+              <div className="data-function">{}</div>
+            </div>
+        </div>
+
         <div class="content-container">
           <div className="post-uploader">
             <img src={dogo} alt="dogo" />
