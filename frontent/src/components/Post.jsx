@@ -70,7 +70,7 @@ export default function Post({post}) {
             {post.description}
         </div>
         <div>
-          # {post?.tags.map(tag => <span class="tag">{tag}</span>)}
+          # {post?.tags.map(tag => <span className="tag">{tag}</span>)}
         </div>
       <div className="buttons">
           <button onClick={handleLike}>Me gusta</button>

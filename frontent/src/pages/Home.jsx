@@ -12,6 +12,11 @@ export default function Home() {
   //Hooks
   const [posts, setPosts] = useState([])
   const [ limit, setLimit ] = useSessionStorage('limit', 10)
+  
+
+  console.log(api.post.getMostPostsUser());
+  
+
   useEffect(() => {
       const fetchData = async () => {
         let data = await api.post.getPostsLimit({
@@ -33,7 +38,7 @@ export default function Home() {
   return (
     <>
       <div className="home-container">
-        <div class="title-container">
+        <div className="title-container">
           <h1>Dogstagram</h1>
         </div>
         <div className="data-admin">
@@ -50,12 +55,12 @@ export default function Home() {
               </select>
             </div>
             <div className="data">
-              <div className="data-text">Cantidad de posts</div>
+              <div className="data-text">User with the most number of post:</div>
               <div className="data-function">{}</div>
             </div>
         </div>
 
-        <div class="content-container">
+        <div className="content-container">
           <div className="post-uploader">
             <img src={dogo} alt="dogo" />
               <PostForm/>

@@ -50,6 +50,16 @@ router.post('/post', function (req, res) {
         })
 })
 
+router.post('/post/mostPostsUser', function (req, res) {
+    controller.getMostPostsUser(req.body)
+        .then(data => {
+            response.success(req, res, data, 201);
+        })
+        .catch(e => {
+            response.error(req, res, e, 500, e);
+        })
+})
+
 router.post('/limit', function (req, res) {
     controller.getPostsLimit(req.body.limit)
         .then(data => {

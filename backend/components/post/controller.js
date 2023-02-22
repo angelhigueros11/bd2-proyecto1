@@ -1,3 +1,5 @@
+
+
 const Model = require('./model');
 
 
@@ -44,10 +46,16 @@ async function getPostsLimit(limit){
     return posts;
 }
 
+async function getMostPostsUser (){
+    const count = await Model.aggregate([{$group: {_id: "$name",count: { $sum: 1 }}},{$sort: {count: -1}},{$limit: 1}])
+    return {count}
+}
+
 module.exports = {
     addPost,
     getPosts,
     addLike,
     remove,
-    getPostsLimit
+    getPostsLimit,
+    getMostPostsUser,
 }

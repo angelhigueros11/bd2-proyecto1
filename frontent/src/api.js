@@ -76,6 +76,11 @@ const api = {
        body: JSON.stringify(params),
      })
    },
+   getMostPostsUser() {
+    return callApi(`/post/mostPostsUser`, {
+        method: "POST",
+    })
+    }
   }
 };
 

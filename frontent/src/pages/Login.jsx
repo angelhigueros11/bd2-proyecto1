@@ -54,7 +54,7 @@ export default function Login() {
           <input  type="text" name="name" value={name} onChange={handleData} placeholder="Name" />
           <input type="password" name="password" value={password} onChange={handleData} placeholder="Password" />
           <input type="submit" />
-          <div class="box2">
+          <div className="box2">
           </div>
         </form>
         <a href="/signup">Make a new account</a>
