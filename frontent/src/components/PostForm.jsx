@@ -7,7 +7,8 @@ import { useSessionStorage } from '../hooks/useSessionStorage'
 const PostForm = () => {
     const [ nameSession ] = useSessionStorage('name', '')
     const [ idSession ] = useSessionStorage('idUser', '')
-  const [ contactInfo, setContactInfo ] = useState({})
+    const [ contactInfo, setContactInfo ] = useState({})
+    const {email, phone, address} = contactInfo
 
 
     const [postDescription, setPostDescription] = useState();
@@ -85,6 +86,26 @@ const PostForm = () => {
           )
         }
     }
+    
+    const handle = e => {
+      setContactInfo({
+        ...contactInfo, 
+        [e.target.name] : e.target.value
+      })
+    }
+
+    const save = e => {
+      e.preventDefault()
+      api.post.updateInfo({
+        id: idSession,
+        email, 
+        phone, 
+        address
+      })
+
+      alert('Datos actualizados')
+      window.location.reload()
+    }
 
     return (
       
@@ -93,10 +114,11 @@ const PostForm = () => {
             <h1>Hi {nameSession}, Post something 'bout ur Doggo!!!</h1>
             <b>Tus datos</b>
             <ul>
-              <li>Email: {contactInfo?.email}</li>
-              <li>Telefono: {contactInfo?.phone}</li>
-              <li>Direccion: {contactInfo?.address}</li>
+              <li>Email: <input type="text" name='email' value={email} onChange={handle}/></li>
+              <li>Telefono: <input type="text" name='phone' value={phone} onChange={handle}/></li>
+              <li>Direccion: <input type="text" name='address' value={address} onChange={handle}/></li>
             </ul>
+            <button onClick={save}>Guardar nueva informacion</button>
             <input type="text" onChange={handleData} value={postDescription} placeholder='Doggo time...'/>
             <input type="text" onChange={handleTags} value={tags} placeholder='Ingrese sus tags separados por coma (,)'/>
             <input type="file" onChange={handleFile} />
