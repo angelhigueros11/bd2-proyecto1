@@ -50,6 +50,28 @@ router.post('/post', function (req, res) {
         })
 })
 
+// Agregar nuevo tag
+router.post('/tag', function (req, res) {
+    controller.newTag(req.body)
+        .then(data => {
+            response.success(req, res, data, 201);
+        })
+        .catch(e => {
+            response.error(req, res, e, 500, e);
+        })
+})
+
+router.post('/info', function (req, res) {
+    controller.info(req.body)
+        .then(data => {
+            response.success(req, res, data, 201);
+        })
+        .catch(e => {
+            response.error(req, res, e, 500, e);
+        })
+})
+
+
 router.post('/mostPostsUser', function (req, res) {
     controller.getMostPostsUser(req.body)
         .then(data => {
