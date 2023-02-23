@@ -1,6 +1,7 @@
 
 
 const Model = require('./model');
+const ModelUser = require('../auth/model');
 
 
 function addPost({ id, name, description, image, tags }) {
@@ -41,6 +42,30 @@ async function getPosts(params){
     return post;
 }
 
+
+async function info({id, phone, address, email}){
+    const userr = await ModelUser.findById(id);
+    userr.contact.phone = phone
+    userr.contact.address = address
+    userr.contact.email = email
+    userr.save()
+}
+
+
+async function newTag({id, tag}){
+    const post = await Model.find({_id: id});
+    try {
+        const posts = await Model.find({_id: id});
+        const updatedPosts = posts.map(post => {
+          post.tags = [...post.tags, tag];
+          return post.save();
+        });
+        return Promise.all(updatedPosts);
+      } catch (err) {
+        console.error(err);
+      }
+}
+
 async function getPostsLimit(limit){
     const posts = await Model.find().sort({ createdAt: 'desc' }).limit(limit);
     return posts;
@@ -58,4 +83,6 @@ module.exports = {
     remove,
     getPostsLimit,
     getMostPostsUser,
+    newTag,
+    info
 }
