@@ -45,6 +45,18 @@ const api = {
         body: JSON.stringify(params),
       })
     },
+    updateInfo(params) {
+      return callApi(`/post/info`, {
+       method: "POST",
+       body: JSON.stringify(params),
+     })
+   },
+    nuevoTag(params) {
+      return callApi(`/post/tag`, {
+       method: "POST",
+       body: JSON.stringify(params),
+     })
+   },
     addImage(name, params) {
       return callApi(`/image/${name}`, {
        method: "POST",
