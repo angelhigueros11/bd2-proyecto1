@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import api from '../api'
 import Swal from 'sweetalert2'
 import '../css/Post.css'
@@ -6,12 +6,13 @@ import '../css/Post.css'
 
 export default function Post({post}) {
 
+  const [nuevoTag, setNuevoTag] = useState('')
   const handleLike = async () => {
     const fetchData = await api.post.like({
       id: post._id
     })
 
-    if (fetchData.error == ''){
+    if (fetchData.error === ''){
       Swal.fire(
         'Me gusta', 
         '',
@@ -33,7 +34,7 @@ export default function Post({post}) {
       id: post._id
     })
 
-    if (fetchData.error == ''){
+    if (fetchData.error === ''){
       Swal.fire(
         'Post eliminado', 
         '',
@@ -50,6 +51,18 @@ export default function Post({post}) {
     window.location.reload()
   }
 
+
+  const handleNuevoTag= (e) => {
+    setNuevoTag(e.target.value)
+  }
+
+  const guardarNuevoTag= (e) => {
+    e.preventDefault()
+    api.post.nuevoTag({
+      id: post._id,
+      tag: nuevoTag
+    })
+  }
 
   useEffect(() => {
     // Restaurar la posición del scroll desde sessionStorage
@@ -71,6 +84,10 @@ export default function Post({post}) {
         </div>
         <div>
           # {post?.tags.map(tag => <span className="tag">{tag}</span>)}
+        </div>
+        <div>
+          <input type="text" value={nuevoTag} onChange={handleNuevoTag} placeholder='guardar tag' />
+          <button onClick={guardarNuevoTag}>Guardar</button>
         </div>
       <div className="buttons">
           <button onClick={handleLike}>Me gusta</button>
